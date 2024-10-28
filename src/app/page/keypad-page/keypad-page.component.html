@@ -1,0 +1,59 @@
+<main class="w-full h-full flex">
+  <div
+    class="flex flex-col flex-grow items-center justify-center p-8 basis-0.5"
+  >
+    <form [formGroup]="form" class="flex justify-center mb-4">
+      <div class="keypad-input flex items-center px-4">
+        <input
+          formControlName="number"
+          type="text"
+          class="py-4 bg-transparent outline-none text-lg"
+        />
+        <button mat-icon-button (click)="backspaceClick()">
+          <mat-icon>backspace</mat-icon>
+        </button>
+      </div>
+    </form>
+    <app-keypad (buttonClicked)="keypadClick($event)" />
+    <div class="flex justify-center mt-6">
+      <button
+        mat-fab
+        [disabled]="disableCallButton"
+        (click)="audioCall()"
+        class="!rounded-e-none !shadow-none call-btn"
+      >
+        <mat-icon>call</mat-icon>
+      </button>
+      <div class="bg-white w-0.5"></div>
+      <button
+        mat-fab
+        [disabled]="disableCallButton"
+        class="!rounded-s-none !shadow-none call-btn"
+      >
+        <mat-icon>videocam</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="flex flex-col justify-center flex-grow basis-0.5 p-8">
+    <video id="activeVideo"></video>
+    <div class="flex flex-row space-x-4">
+      <button mat-fab [disabled]="disableCallControls">
+        <mat-icon>videocam</mat-icon>
+      </button>
+      <button mat-fab [disabled]="disableCallControls">
+        <mat-icon>mic</mat-icon>
+      </button>
+      <button mat-fab [disabled]="disableCallControls">
+        <mat-icon>dialpad</mat-icon>
+      </button>
+      <button
+        mat-fab
+        class="disabled:!bg-red-900 !bg-red-600 !text-white"
+        [disabled]="disableCallControls"
+        (click)="endCall()"
+      >
+        <mat-icon>call_end</mat-icon>
+      </button>
+    </div>
+  </div>
+</main>

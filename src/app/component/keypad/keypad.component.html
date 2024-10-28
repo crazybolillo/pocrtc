@@ -1,0 +1,13 @@
+<div class="flex flex-col space-y-6">
+  @for (buttonRow of buttons; track buttonRow) {
+    <div class="flex space-x-6">
+      @for (button of buttonRow; track button.mainText) {
+        <app-keypad-button
+          [mainText]="button.mainText"
+          [secondaryText]="button.secondaryText"
+          (click)="buttonClicked.emit(button.mainText)"
+        />
+      }
+    </div>
+  }
+</div>

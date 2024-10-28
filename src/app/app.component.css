@@ -1,0 +1,10 @@
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 180px;
+  background-color: var(--mdc-elevated-card-container-color);
+  border-color: var(--mdc-elevated-card-container-color);
+  box-shadow: var(--mdc-elevated-card-container-elevation);
+}

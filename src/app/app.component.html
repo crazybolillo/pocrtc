@@ -1,0 +1,43 @@
+<mat-sidenav-container>
+  <mat-sidenav fixedInViewport opened="true" mode="side" class="flex flex-col">
+    <div class="flex justify-center w-full mt-4 mb-8">
+      <img
+        ngSrc="pocrtc.png"
+        width="96"
+        height="95"
+        alt="Application's logo"
+        priority
+      />
+    </div>
+    <div class="px-4 flex flex-col">
+      <div class="flex flex-col items-center mb-6">
+        <span>{{ state | async }}</span>
+        <span
+          class="block h-4 w-20 rounded-full"
+          [class.bg-gray-500]="showDisconnect((state | async) ?? '')"
+          [class.bg-red-600]="showError((state | async) ?? '')"
+          [class.bg-green-500]="showSuccess((state | async) ?? '')"
+        ></span>
+      </div>
+      <mat-nav-list>
+        <div class="flex flex-col space-y-4">
+          @for (link of Object.values(navigationList); track link) {
+            <a
+              mat-list-item
+              [activated]="link.isActive"
+              [routerLink]="link.href"
+            >
+              <div class="flex flex-col items-center">
+                <mat-icon aria-hidden="false" [fontIcon]="link.icon" />
+                <span class="text-xs font-bold">{{ link.name }}</span>
+              </div>
+            </a>
+          }
+        </div>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>

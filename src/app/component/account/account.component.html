@@ -1,0 +1,35 @@
+<form [formGroup]="form" class="flex flex-col">
+  <mat-form-field class="w-full">
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address" />
+  </mat-form-field>
+  <div class="flex space-x-4">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Domain</mat-label>
+      <input matInput formControlName="domain" />
+    </mat-form-field>
+  </div>
+  <mat-form-field class="w-full">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" [type]="passwordType" />
+    <button
+      matSuffix
+      mat-icon-button
+      aria-label="Show/Hide"
+      class="mr-2"
+      (click)="togglePassword()"
+    >
+      <mat-icon>{{ passwordIcon }}</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-checkbox formControlName="remember" class="mb-4"
+    >Remember password</mat-checkbox
+  >
+  <div>
+    <button (click)="connect()" mat-flat-button>Connect</button>
+  </div>
+</form>
