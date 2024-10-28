@@ -1,0 +1,11 @@
+button.call-btn {
+  background-color: theme(backgroundColor.green.600);
+  @media (prefers-color-scheme: light) {
+    background-color: theme(backgroundColor.green.500);
+    color: white;
+  }
+}
+
+.keypad-input {
+  background-color: var(--mdc-elevated-card-container-color);
+}

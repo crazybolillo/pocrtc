@@ -1,0 +1,42 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+$dark-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+$light-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+html {
+  @include mat.all-component-themes($dark-theme);
+  background-color: #111;
+
+  @media (prefers-color-scheme: light) {
+    @include mat.all-component-colors($light-theme);
+    background-color: theme("backgroundColor.gray.100");
+  }
+}
+
+@include mat.color-variants-backwards-compatibility($dark-theme);
+@include mat.typography-hierarchy($dark-theme);

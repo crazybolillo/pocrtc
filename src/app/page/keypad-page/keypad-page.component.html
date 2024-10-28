@@ -1,0 +1,35 @@
+<main class="w-full h-full flex justify-center items-center">
+  <div class="flex flex-col">
+    <form [formGroup]="form" class="flex justify-center mb-4">
+      <div class="keypad-input flex items-center px-4">
+        <input
+          formControlName="number"
+          type="text"
+          class="py-4 bg-transparent outline-none text-lg"
+        />
+        <button mat-icon-button (click)="backspaceClick()">
+          <mat-icon>backspace</mat-icon>
+        </button>
+      </div>
+    </form>
+    <app-keypad (buttonClicked)="keypadClick($event)" />
+    <div class="flex justify-center mt-6">
+      <button
+        mat-fab
+        [disabled]="disableCallButton"
+        (click)="audioCall()"
+        class="!rounded-e-none !shadow-none call-btn"
+      >
+        <mat-icon>call</mat-icon>
+      </button>
+      <div class="bg-white w-0.5"></div>
+      <button
+        mat-fab
+        [disabled]="disableCallButton"
+        class="!rounded-s-none !shadow-none call-btn"
+      >
+        <mat-icon>videocam</mat-icon>
+      </button>
+    </div>
+  </div>
+</main>
